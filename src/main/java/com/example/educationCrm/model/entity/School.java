@@ -12,6 +12,12 @@ public class School extends  BaseEntity{
     @OneToMany(mappedBy = "school")
     private List<Teacher> teachers;
 
+    public School(){}
+
+    public School(String name){
+        this.name = name;
+    }
+
     public String getName() {
         return name;
     }

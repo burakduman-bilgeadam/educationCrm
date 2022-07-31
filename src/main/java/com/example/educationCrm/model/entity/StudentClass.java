@@ -4,12 +4,13 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@Table(name="studentLevel")
 public class StudentClass extends  BaseEntity{
 
     private String name;
     @OneToMany(mappedBy = "studentClass")
     private List<Student> students;
-    @OneToMany
+    @ManyToMany
     private List<Teacher> teachers;
 
     public String getName() {

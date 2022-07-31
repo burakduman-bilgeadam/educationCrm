@@ -12,6 +12,12 @@ public class Lesson extends BaseEntity{
     @ManyToMany(mappedBy = "lessons")
     private List<Student> students;
 
+    public Lesson(){}
+
+    public Lesson(String name){
+        this.name= name;
+    }
+
     public String getName() {
         return name;
     }
