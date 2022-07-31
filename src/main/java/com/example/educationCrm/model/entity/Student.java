@@ -1,7 +1,6 @@
 package com.example.educationCrm.model.entity;
 
 import javax.persistence.*;
-import java.util.Date;
 import java.util.List;
 
 @Entity
