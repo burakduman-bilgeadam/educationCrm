@@ -1,6 +1,7 @@
 package com.example.educationCrm.serviceImp;
 
 import com.example.educationCrm.model.dto.StudentDTO;
+import com.example.educationCrm.model.dto.StudentInformationDTO;
 import com.example.educationCrm.model.entity.School;
 import com.example.educationCrm.model.entity.Student;
 import com.example.educationCrm.model.entity.StudentClass;
@@ -50,5 +51,11 @@ public class StudentServiceImp implements StudentService {
         student.setSchool(school);
         student.setStudentClass(studentClass);
         this.studentRepository.save(student);
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public StudentInformationDTO getNameSurnameById(Long id) {
+        return this.studentRepository.getStudentById(id);
     }
 }
