@@ -1,6 +1,8 @@
 package com.example.educationCrm.model.entity;
 
 import javax.persistence.MappedSuperclass;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import java.util.Date;
 
 @MappedSuperclass
@@ -8,6 +10,7 @@ public class Person extends BaseEntity {
     private String name;
     private String surname;
     private Date createdDate;
+    @Temporal(TemporalType.DATE)
     private Date birthDate;
 
     public String getName() {

@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.SQLDataException;
+
 @RestController
 @RequestMapping("/lesson")
 public class LessonController {
@@ -14,7 +16,7 @@ public class LessonController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void saveLesson(@RequestBody LessonDTO lessonDTO) {
+    public void saveLesson(@RequestBody LessonDTO lessonDTO){
         this.lessonService.save(lessonDTO.getName());
     }
 

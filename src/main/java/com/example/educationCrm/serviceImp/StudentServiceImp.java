@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Locale;
 
 @Service
@@ -24,21 +25,22 @@ public class StudentServiceImp implements StudentService {
     private SchoolRepository schoolRepository;
     @Autowired
     private StudentClassRepository studentClassRepository;
-    private final SimpleDateFormat formatter
+    /*private final SimpleDateFormat formatter
             = new SimpleDateFormat("dd-MM-yyyy"
-            , Locale.ENGLISH);
+            , Locale.ENGLISH);*/
 
     @Transactional
     @Override
     public void save(StudentDTO studentDto) throws ParseException {
         Student student = new Student();
-        student.setBirthDate(
-                formatter.parse(studentDto.getBirthDate()));
+        /*
+        student.setBirthDate(formatter.parse(studentDto.getBirthDate()));
+        */
+        student.setBirthDate(studentDto.getBirthDate());
         student.setNumber(studentDto.getNumber());
         student.setName(studentDto.getName());
         student.setSurname(studentDto.getSurname());
-        student.setCreatedDate(formatter
-                .parse(studentDto.getCreatedDate()));
+        student.setCreatedDate(new Date());
         StudentClass studentClass = this.studentClassRepository
                 .findById(studentDto.getStudentClassId())
                 .orElse(null);

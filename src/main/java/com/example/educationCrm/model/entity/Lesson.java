@@ -6,6 +6,7 @@ import java.util.List;
 @Entity
 public class Lesson extends BaseEntity{
 
+    @Column(name = "name",unique = true)
     private String name;
     @OneToMany(mappedBy = "lesson")
     private List<Teacher> teachers;

@@ -1,12 +1,16 @@
 package com.example.educationCrm.model.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class StudentDTO {
     private String name;
     private String surname;
-    private String createdDate;
-    private String birthDate;
+    @JsonFormat(pattern = "dd-MM-yyyy")
+    private Date createdDate;
+    @JsonFormat(pattern = "dd-MM-yyyy")
+    private Date birthDate;
     private String number;
     private Long schoolId;
     private Long studentClassId;
@@ -27,19 +31,19 @@ public class StudentDTO {
         this.surname = surname;
     }
 
-    public String getCreatedDate() {
+    public Date getCreatedDate() {
         return createdDate;
     }
 
-    public void setCreatedDate(String createdDate) {
+    public void setCreatedDate(Date createdDate) {
         this.createdDate = createdDate;
     }
 
-    public String getBirthDate() {
+    public Date getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(String birthDate) {
+    public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
     }
 
