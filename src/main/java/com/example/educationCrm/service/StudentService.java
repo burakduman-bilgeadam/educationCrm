@@ -9,4 +9,7 @@ import java.text.ParseException;
 public interface StudentService {
     void save(StudentDTO studentDto) throws ParseException;
     StudentInformationDTO getNameSurnameById(Long id);
+
+    void update(StudentDTO studentDTO);
+    void delete(Long id);
 }

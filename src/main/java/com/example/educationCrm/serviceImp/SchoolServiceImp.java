@@ -24,6 +24,7 @@ public class SchoolServiceImp implements SchoolService {
         this.schoolRepository.save(school);
     }
 
+    @Transactional
     @Override
     public void update(SchoolDTO schoolDTO) {
        Optional<School> schoolOptional=
@@ -35,13 +36,15 @@ public class SchoolServiceImp implements SchoolService {
        }
     }
 
+    @Transactional
     @Override
     public void delete(SchoolDTO schoolDTO) {
         this.schoolRepository.deleteById(schoolDTO.getId());
     }
 
+    @Transactional(readOnly = true)
     @Override
     public List<SchoolInformationDTO> findAllName() {
-        return this.schoolRepository.getAllById(1L);
+        return this.schoolRepository.getSchoolBy();
     }
 }

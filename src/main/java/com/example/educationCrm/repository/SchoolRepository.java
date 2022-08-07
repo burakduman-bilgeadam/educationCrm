@@ -11,5 +11,5 @@ import java.util.List;
 @Repository
 public interface SchoolRepository
         extends JpaRepository<School,Long> {
-    List<SchoolInformationDTO> getAllById(Long id);
+    List<SchoolInformationDTO> getSchoolBy();
 }

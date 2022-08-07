@@ -17,6 +17,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Optional;
 
 @Service
 public class StudentServiceImp implements StudentService {
@@ -57,5 +58,32 @@ public class StudentServiceImp implements StudentService {
     @Override
     public StudentInformationDTO getNameSurnameById(Long id) {
         return this.studentRepository.getStudentById(id);
+    }
+
+    @Override
+    public void update(StudentDTO studentDTO) {
+        Optional<Student> studentOptional = this.studentRepository
+                .findById(studentDTO.getId());
+        if(studentOptional.isPresent()){
+            Student student = studentOptional.get();
+            student.setSurname(studentDTO.getSurname());
+            student.setName(studentDTO.getName());
+            student.setBirthDate(studentDTO.getBirthDate());
+            student.setNumber(studentDTO.getNumber());
+            StudentClass studentClass = this.studentClassRepository
+                    .findById(studentDTO.getStudentClassId())
+                    .orElse(null);
+            School school = this.schoolRepository
+                    .findById(studentDTO.getSchoolId())
+                    .orElse(null);
+            student.setSchool(school);
+            student.setStudentClass(studentClass);
+            this.studentRepository.save(student);
+        }
+    }
+
+    @Override
+    public void delete(Long id) {
+        this.studentRepository.deleteById(id);
     }
 }

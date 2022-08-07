@@ -30,4 +30,14 @@ public class StudentController {
         return new ResponseEntity<>(
                 this.studentService.getNameSurnameById(id),HttpStatus.OK);
     }
+
+    @PutMapping
+    public void update(@RequestBody StudentDTO studentDTO){
+        this.studentService.update(studentDTO);
+    }
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Long id){
+        this.studentService.delete(id);
+    }
 }

@@ -5,6 +5,8 @@ import java.util.List;
 
 @Entity
 @Table(name="studentLevel")
+/*@NamedEntityGraph(name = "StudentClass.detail",
+        attributeNodes = @NamedAttributeNode("students"))*/
 public class StudentClass extends  BaseEntity{
 
     private String name;

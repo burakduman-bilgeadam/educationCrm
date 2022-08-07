@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.util.Date;
 
-public class StudentDTO {
+public class TeacherDTO {
     private Long id;
     private String name;
     private String surname;
@@ -12,9 +12,16 @@ public class StudentDTO {
     private Date createdDate;
     @JsonFormat(pattern = "dd-MM-yyyy")
     private Date birthDate;
-    private String number;
-    private Long schoolId;
-    private Long studentClassId;
+    private Long lesson_id;
+    private Long school_id;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -48,35 +55,19 @@ public class StudentDTO {
         this.birthDate = birthDate;
     }
 
-    public String getNumber() {
-        return number;
+    public Long getLesson_id() {
+        return lesson_id;
     }
 
-    public void setNumber(String number) {
-        this.number = number;
+    public void setLesson_id(Long lesson_id) {
+        this.lesson_id = lesson_id;
     }
 
-    public Long getSchoolId() {
-        return schoolId;
+    public Long getSchool_id() {
+        return school_id;
     }
 
-    public void setSchoolId(Long schoolId) {
-        this.schoolId = schoolId;
-    }
-
-    public Long getStudentClassId() {
-        return studentClassId;
-    }
-
-    public void setStudentClassId(Long studentClassId) {
-        this.studentClassId = studentClassId;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+    public void setSchool_id(Long school_id) {
+        this.school_id = school_id;
     }
 }
