@@ -9,4 +9,7 @@ public interface GradeService {
     public void save(GradeDTO gradeDTO);
     public void delete(Long id);
     public List<GradeDTO> findAll();
+
+    public List<Object>
+    getGradesByLessonName(String lessonName);
 }

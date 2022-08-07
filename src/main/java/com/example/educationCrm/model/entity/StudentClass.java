@@ -10,7 +10,7 @@ import java.util.List;
 public class StudentClass extends  BaseEntity{
 
     private String name;
-    @OneToMany(mappedBy = "studentClass")
+    @OneToMany(mappedBy = "studentClass",fetch = FetchType.EAGER)
     private List<Student> students;
     @ManyToMany
     private List<Teacher> teachers;

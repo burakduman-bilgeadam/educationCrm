@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface LessonRepository
         extends CrudRepository<Lesson,Long> {
+    public Lesson findLessonByName(String name);
 }

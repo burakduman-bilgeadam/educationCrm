@@ -34,4 +34,10 @@ public class GradeController {
     public List<GradeDTO> getGrades(){
         return this.gradeService.findAll();
     }
+
+    @GetMapping("/getGradesByLessonName")
+    public List<Object> getGradesByLessonName
+            (@RequestParam String lessonName){
+        return this.gradeService.getGradesByLessonName(lessonName);
+    }
 }

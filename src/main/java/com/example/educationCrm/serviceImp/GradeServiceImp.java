@@ -3,9 +3,11 @@ package com.example.educationCrm.serviceImp;
 import com.example.educationCrm.helper.ModelMapperHelper;
 import com.example.educationCrm.model.dto.GradeDTO;
 import com.example.educationCrm.model.entity.Grade;
+import com.example.educationCrm.model.entity.Lesson;
 import com.example.educationCrm.model.entity.Student;
 import com.example.educationCrm.model.entity.Teacher;
 import com.example.educationCrm.repository.GradeRepository;
+import com.example.educationCrm.repository.LessonRepository;
 import com.example.educationCrm.repository.StudentRepository;
 import com.example.educationCrm.repository.TeacherRepository;
 import com.example.educationCrm.service.GradeService;
@@ -25,6 +27,8 @@ public class GradeServiceImp implements GradeService {
     private StudentRepository studentRepository;
     @Autowired
     private TeacherRepository teacherRepository;
+    @Autowired
+    private LessonRepository lessonRepository;
     @Autowired
     private ModelMapperHelper modelMapperHelper;
 
@@ -81,5 +85,11 @@ public class GradeServiceImp implements GradeService {
         return modelMapperHelper.mapAll(
                 (List<Grade>)this.gradeRepository.findAll()
                 ,GradeDTO.class);
+    }
+
+    @Override
+    public List<Object> getGradesByLessonName(String lessonName) {
+        return this.gradeRepository
+                .getGradesByLessonName(lessonName);
     }
 }
