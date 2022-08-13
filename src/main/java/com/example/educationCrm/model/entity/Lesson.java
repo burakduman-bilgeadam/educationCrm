@@ -1,5 +1,7 @@
 package com.example.educationCrm.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -8,6 +10,7 @@ public class Lesson extends BaseEntity{
 
     @Column(name = "name",unique = true)
     private String name;
+    @JsonIgnore
     @OneToMany(mappedBy = "lesson")
     private List<Teacher> teachers;
     @ManyToMany(mappedBy = "lessons")

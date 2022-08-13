@@ -28,6 +28,7 @@ public class TeacherController {
         this.teacherService.delete(teacherId);
     }
 
+    @GetMapping
     public List<TeacherDTO> findAll(){
         return this.teacherService.findAll();
     }

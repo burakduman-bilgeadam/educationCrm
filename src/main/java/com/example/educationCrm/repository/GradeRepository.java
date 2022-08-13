@@ -18,4 +18,6 @@ public interface GradeRepository
             " where" +
             " l.name=:lessonName",nativeQuery = true)
     List<Object> getGradesByLessonName(String lessonName);
+
+    List<Grade> findGradeByTeacher_LessonName(String lessonName);
 }

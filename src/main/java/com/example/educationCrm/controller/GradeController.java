@@ -1,9 +1,10 @@
 package com.example.educationCrm.controller;
 
 import com.example.educationCrm.model.dto.GradeDTO;
+import com.example.educationCrm.model.dto.GradeFilterLessonDTO;
+import com.example.educationCrm.model.entity.Grade;
 import com.example.educationCrm.service.GradeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -39,5 +40,16 @@ public class GradeController {
     public List<Object> getGradesByLessonName
             (@RequestParam String lessonName){
         return this.gradeService.getGradesByLessonName(lessonName);
+    }
+
+    @GetMapping("/getGradesByLessonNameWithDerived")
+    public List<GradeFilterLessonDTO> getGradesByLessonNameWithDerived
+            (@RequestParam String lessonName){
+        return this.gradeService.getGradesByLessonNameWithDerived(lessonName);
+    }
+
+    @GetMapping("/entegration")
+    public List<GradeDTO> getGradesWithEntegration(){
+        return this.gradeService.getEntegrationGrade();
     }
 }

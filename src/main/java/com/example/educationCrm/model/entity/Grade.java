@@ -1,8 +1,13 @@
 package com.example.educationCrm.model.entity;
 
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
+
 import javax.persistence.*;
 
 @Entity
+@Where(clause = "is_active=true")
+@SQLDelete(sql = "update grade set is_active=false where id=?")
 public class Grade extends BaseEntity{
 
     private Double grade;
@@ -10,6 +15,8 @@ public class Grade extends BaseEntity{
     private Student student;
     @ManyToOne
     private Teacher teacher;
+
+    private Boolean isActive;
 
     public Double getGrade() {
         return grade;
@@ -33,5 +40,13 @@ public class Grade extends BaseEntity{
 
     public void setTeacher(Teacher teacher) {
         this.teacher = teacher;
+    }
+
+    public Boolean getActive() {
+        return isActive;
+    }
+
+    public void setActive(Boolean active) {
+        isActive = active;
     }
 }
