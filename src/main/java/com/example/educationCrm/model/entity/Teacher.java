@@ -8,6 +8,11 @@ import java.util.List;
 public class Teacher extends Person{
 
     @ManyToMany
+    @JoinTable(name = "teachers_students"
+            ,joinColumns = @JoinColumn(name = "teacher_id"),
+            inverseJoinColumns = @JoinColumn(name = "student_id")
+            ,uniqueConstraints = { @UniqueConstraint
+            (columnNames = { "teacher_id", "student_id" }) })
     private List<Student> students;
     @ManyToOne
     private School school;

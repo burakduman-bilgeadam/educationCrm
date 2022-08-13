@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 import java.util.Optional;
 
@@ -60,6 +61,7 @@ public class StudentServiceImp implements StudentService {
         return this.studentRepository.getStudentById(id);
     }
 
+    @Transactional
     @Override
     public void update(StudentDTO studentDTO) {
         Optional<Student> studentOptional = this.studentRepository
@@ -82,8 +84,21 @@ public class StudentServiceImp implements StudentService {
         }
     }
 
+    @Transactional
     @Override
     public void delete(Long id) {
         this.studentRepository.deleteById(id);
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public List<StudentInformationDTO> getBySchoolName(String schoolName) {
+        return this.studentRepository.findStudentBySchoolName(schoolName);
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public Student findById(Long id) {
+        return this.studentRepository.findById(id).orElse(null);
     }
 }

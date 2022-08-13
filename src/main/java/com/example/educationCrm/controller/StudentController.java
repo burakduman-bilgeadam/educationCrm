@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
+import java.util.List;
 
 @RestController
 @RequestMapping("/student")
@@ -39,5 +40,11 @@ public class StudentController {
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id){
         this.studentService.delete(id);
+    }
+
+    @GetMapping("/getBySchoolName")
+    public List<StudentInformationDTO> getBySchoolName
+            (@RequestParam String schoolName){
+        return this.studentService.getBySchoolName(schoolName);
     }
 }
