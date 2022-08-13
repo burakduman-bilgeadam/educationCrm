@@ -130,21 +130,22 @@ public class GradeServiceImp implements GradeService {
         RestTemplate restTemplate = new RestTemplate();
         String fooResourceUrl
                 = "http://92.205.21.233:8090/grade";
-        //postForObject
+        /*//postForObject
         //data göndermek için
         Object[] objects
                 = restTemplate.getForObject(fooResourceUrl, Object[].class);
         List<GradeDTO> response = Arrays.stream(objects)
                 .map(object -> modelMapperHelper.convertToModel(object, GradeDTO.class))
                 .collect(Collectors.toList());
-       /* ResponseEntity<List<GradeDTO>> responseEntity =
+         */
+       ResponseEntity<List<GradeDTO>> responseEntity =
                 restTemplate.exchange(
                         fooResourceUrl,
                         HttpMethod.GET,
                         null,
                         new ParameterizedTypeReference<List<GradeDTO>>() {}
                 );
-        List<GradeDTO> response = responseEntity.getBody();*/
+        List<GradeDTO> response = responseEntity.getBody();
         return response;
     }
 }
