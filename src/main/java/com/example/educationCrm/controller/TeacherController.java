@@ -41,14 +41,9 @@ public class TeacherController {
     @PutMapping("/addStudents")
     public ResponseEntity<Void> addStudents
             (@RequestBody TeacherStudentDTO teacherStudentDTO){
-        try {
             this.teacherService.addStudents(teacherStudentDTO);
             return new ResponseEntity(
                      HttpStatus.OK);
-        } catch (Exception cve){
-            return new ResponseEntity("Aynı Id ile Kayıt Hatası"
-                    , HttpStatus.BAD_REQUEST);
-        }
     }
 
     @GetMapping("/getStudents")

@@ -7,7 +7,7 @@ import java.util.List;
 @Entity
 public class Teacher extends Person{
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @JoinTable(name = "teachers_students"
             ,joinColumns = @JoinColumn(name = "teacher_id"),
             inverseJoinColumns = @JoinColumn(name = "student_id")

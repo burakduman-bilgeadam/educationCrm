@@ -18,7 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -90,6 +90,7 @@ public class TeacherServiceImp implements TeacherService {
         );
     }
 
+    @Transactional
     @Override
     public void addStudents(TeacherStudentDTO teacherStudentDTO) {
         Teacher teacher = this.teacherRepository
@@ -107,6 +108,13 @@ public class TeacherServiceImp implements TeacherService {
         }
         teacher.setStudents(students);
         this.teacherRepository.save(teacher);*/
+        Student student = new Student();
+        student.setNumber("21332");
+        student.setName("BBBB");
+        student.setSurname("BBBB");
+        student.setBirthDate(new Date());
+        student.setCreatedDate(new Date());
+        teacher.getStudents().add(student);
         this.teacherRepository.save(teacher);
     }
 
