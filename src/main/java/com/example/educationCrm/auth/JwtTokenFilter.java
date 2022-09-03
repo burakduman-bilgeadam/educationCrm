@@ -24,8 +24,6 @@ import java.util.Objects;
  */
 @Component //Spring Context'e bu class'dan bir bean oluşturarak dahil etmek için bu anotasyonu kullanıyoruz.
 public class JwtTokenFilter extends OncePerRequestFilter {
-
-    @Autowired
     public JwtTokenFilter(TokenManager tokenManager, UserDetailService userDetailService) {
         this.tokenManager = tokenManager;
         this.userDetailService = userDetailService;
@@ -66,6 +64,7 @@ public class JwtTokenFilter extends OncePerRequestFilter {
             Bir hata oluşması durumunda hatayı loglayarak devam ediyoruz.
         */
         if (tokenCore != null && tokenCore.contains("Bearer") && tokenCore.split(" ").length > 1) {
+            //Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJiaWxnZS5hZGFtIiwiaXNzIjoiYnVyYWtkdW1hbi50ZXN0LmNvbS50ciIsImlhdCI6MTY2MjE5OTI4OCwiZXhwIjoxNjYyMTk5ODg4fQ.JFrTDt-eTLNv9XY3nS0LTP0INTmIfsRDY6dNkuvAEcKpxyI6CdpoWOFRBf44mtKuoIrfw-xHWhr5qc5HoZ55ew
             token = tokenCore.split(" ")[1];
             try {
                 username = tokenManager.getUserFromToken(token);

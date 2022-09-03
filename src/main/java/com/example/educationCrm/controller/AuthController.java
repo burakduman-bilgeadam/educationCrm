@@ -60,7 +60,7 @@ public class AuthController {
      * @return
      */
     @PostMapping("/login") //auth/login 'e gelen web istekleri ile bu metodun eşleştirilmesi sağlanır.
-    public ResponseEntity<String> login(@RequestBody LoginDTO loginDto){
+    public ResponseEntity<String> login(@RequestBody(required = false) LoginDTO loginDto){
         try {
             if(loginDto != null && loginDto.getUsername() != null
                     && loginDto.getPassword() != null){
@@ -94,7 +94,7 @@ public class AuthController {
     @PostMapping("/signup") //auth/signup 'a gelen web istekleri ile bu metodun eşleştirilmesi sağlanır.
     public ResponseEntity<String> signUp(@RequestBody LoginDTO loginDto){
         try {
-            if(loginDto != null && loginDto.getUsername() != null && loginDto.getPassword() != null){
+            if(loginDto.getUsername() != null && loginDto.getPassword() != null){
                 userRepository.save(new User(loginDto.getUsername(),passwordEncoder.encode(loginDto.getPassword())));
                 return ResponseEntity.ok(loginDto.getUsername() +" has been successfully registered.");
             }

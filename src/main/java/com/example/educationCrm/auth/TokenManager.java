@@ -19,9 +19,8 @@ public class TokenManager {
      * @param key
      * @param expireTime
      */
-    @Autowired
-    public TokenManager(@Value("${jwt.secret.key : verySecretKey}") String key,
-                        @Value("#{${token.expire.minute : 5} * 60 * 1000}") int expireTime) {
+    public TokenManager(@Value("${jwt.secret.key:verySecretKey}") String key,
+                        @Value("#{${token.expire.minute:5} * 60 * 1000}") int expireTime) {
         this.key = key;
         this.expireTime=expireTime;
     }

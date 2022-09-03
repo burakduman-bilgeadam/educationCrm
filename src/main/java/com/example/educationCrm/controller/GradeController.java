@@ -5,6 +5,7 @@ import com.example.educationCrm.model.dto.GradeFilterLessonDTO;
 import com.example.educationCrm.model.entity.Grade;
 import com.example.educationCrm.service.GradeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
